@@ -5,7 +5,7 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/josepostiga/docker-registry-api-explorer.svg?style=flat-square)](https://packagist.org/packages/josepostiga/docker-registry-api-explorer)
 [![Build Status](https://img.shields.io/travis/josepostiga/docker-registry-api-explorer/master.svg?style=flat-square)](https://travis-ci.org/josepostiga/docker-registry-api-explorer)
 [![Quality Score](https://img.shields.io/scrutinizer/g/josepostiga/docker-registry-api-explorer.svg?style=flat-square)](https://scrutinizer-ci.com/g/josepostiga/docker-registry-api-explorer)
-[![StyleCI](https://github.styleci.io/repos/:github_repo_id/shield)](https://github.styleci.io/repos/:github_repo_id)
+[![StyleCI](https://github.styleci.io/repos/198105219/shield)](https://github.styleci.io/repos/198105219)
 [![Total Downloads](https://img.shields.io/packagist/dt/josepostiga/docker-registry-api-explorer.svg?style=flat-square)](https://packagist.org/packages/josepostiga/docker-registry-api-explorer)
 
 ## Installation
