@@ -1,0 +1,50 @@
+{
+    "name": "josepostiga/docker-registry-api-explorer",
+    "description": "Simple Docker Registry explorer API",
+    "keywords": ["php", "package", "laravel", "docker", "registry", "api", "explorer"],
+    "homepage": "https://github.com/josepostiga/docker-registry-api-explorer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "José Postiga",
+            "email": "josepostiga1990@gmail.com",
+            "homepage": "https://josepostiga.com"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "php": "^7.2",
+        "guzzlehttp/guzzle": "~6.0"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master",
+        "orchestra/testbench": "^3.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Josepostiga\\DockerRegistry\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Josepostiga\\DockerRegistry\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Josepostiga\\DockerRegistry\\DockerRegistryServiceProvider"
+            ],
+            "aliases": {
+                "Package": "Josepostiga\\DockerRegistry\\DockerRegistryFacade"
+            }
+        }
+    }
+}
