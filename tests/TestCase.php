@@ -2,8 +2,8 @@
 
 namespace Josepostiga\DockerRegistry\Tests;
 
-use Josepostiga\DockerRegistry\DockerRegistryServiceProvider;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
+use Josepostiga\DockerRegistry\DockerRegistryServiceProvider;
 
 class TestCase extends OrchestraTestCase
 {
