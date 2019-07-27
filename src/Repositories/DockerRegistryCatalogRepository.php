@@ -3,23 +3,23 @@
 namespace Josepostiga\DockerRegistry\Repositories;
 
 use Illuminate\Support\Collection;
-use Josepostiga\DockerRegistry\Services\DockerRegistryApiClient;
+use Josepostiga\DockerRegistry\Contracts\DockerRegistryClientInterface;
 
 class DockerRegistryCatalogRepository
 {
     /**
-     * @var DockerRegistryApiClient
+     * @var DockerRegistryClientInterface
      */
-    private $apiClient;
+    private $client;
 
-    public function __construct(DockerRegistryApiClient $apiClient)
+    public function __construct(DockerRegistryClientInterface $client)
     {
-        $this->apiClient = $apiClient;
+        $this->client = $client;
     }
 
     public function getAll(): Collection
     {
-        $request = $this->apiClient->get('_catalog');
+        $request = $this->client->get('_catalog');
 
         $response = json_decode($request->getBody(), true);
 

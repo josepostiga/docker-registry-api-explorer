@@ -1,11 +1,11 @@
 <?php
 
-namespace Josepostiga\DockerRegistry\Tests\Unit;
+namespace Josepostiga\DockerRegistry\Tests\Unit\Repositories;
 
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Support\Collection;
 use Josepostiga\DockerRegistry\Tests\TestCase;
-use Josepostiga\DockerRegistry\Services\DockerRegistryApiClient;
+use Josepostiga\DockerRegistry\Contracts\DockerRegistryClientInterface;
 use Josepostiga\DockerRegistry\Repositories\DockerRegistryCatalogRepository;
 
 class DockerRegistryCatalogRepositoryTest extends TestCase
@@ -14,7 +14,7 @@ class DockerRegistryCatalogRepositoryTest extends TestCase
     public function it_creates_a_valid_instance(): void
     {
         $catalogRepository = $this->app->makeWith(DockerRegistryCatalogRepository::class, [
-            'apiClient' => $this->createMock(DockerRegistryApiClient::class),
+            'apiClient' => $this->createMock(DockerRegistryClientInterface::class),
         ]);
 
         $this->assertInstanceOf(DockerRegistryCatalogRepository::class, $catalogRepository);
@@ -35,7 +35,7 @@ class DockerRegistryCatalogRepositoryTest extends TestCase
             ])
         );
 
-        $this->mock(DockerRegistryApiClient::class, function ($mock) use ($expectedResponse) {
+        $this->mock(DockerRegistryClientInterface::class, function ($mock) use ($expectedResponse) {
             $mock->shouldReceive('get')
                 ->once()
                 ->andReturn($expectedResponse);

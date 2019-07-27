@@ -8,6 +8,6 @@ class DockerRegistryFacade extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return 'DockerRegistryApiClient';
+        return 'DockerRegistryClientInterface';
     }
 }

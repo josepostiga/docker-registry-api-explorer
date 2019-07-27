@@ -1,19 +1,19 @@
 <?php
 
-namespace Josepostiga\DockerRegistry\Tests\Unit;
+namespace Josepostiga\DockerRegistry\Tests\Unit\Services;
 
 use Error;
 use stdClass;
 use GuzzleHttp\ClientInterface;
 use Josepostiga\DockerRegistry\Tests\TestCase;
-use Josepostiga\DockerRegistry\Services\DockerRegistryApiClient;
+use Josepostiga\DockerRegistry\Contracts\DockerRegistryClientInterface;
 
-class DockerRegistryApiClientTest extends TestCase
+class LocalDockerRegistryClientTest extends TestCase
 {
     /** @test */
     public function it_creates_a_valid_instance(): void
     {
-        $apiClient = $this->app->make(DockerRegistryApiClient::class);
+        $apiClient = $this->app->make(DockerRegistryClientInterface::class);
 
         $this->assertEquals($this->app->config->get('docker-registry.url'), $apiClient->getUrl());
         $this->assertEquals($this->app->config->get('docker-registry.port'), $apiClient->getPort());
@@ -25,10 +25,10 @@ class DockerRegistryApiClientTest extends TestCase
     public function it_is_singleton(): void
     {
         // creates a default instance
-        $apiClient = $this->app->make(DockerRegistryApiClient::class);
+        $apiClient = $this->app->make(DockerRegistryClientInterface::class);
 
         // creates a new instance
-        $otherApiClient = $this->app->make(DockerRegistryApiClient::class);
+        $otherApiClient = $this->app->make(DockerRegistryClientInterface::class);
 
         // asserts the two objects reference the same instance
         $this->assertSame($apiClient, $otherApiClient);
@@ -39,7 +39,7 @@ class DockerRegistryApiClientTest extends TestCase
     {
         $this->expectException(Error::class);
 
-        $apiClient = $this->app->make(DockerRegistryApiClient::class);
+        $apiClient = $this->app->make(DockerRegistryClientInterface::class);
 
         $apiClient->url = 'http://some-other.url';
     }
@@ -49,7 +49,7 @@ class DockerRegistryApiClientTest extends TestCase
     {
         $this->expectException(Error::class);
 
-        $apiClient = $this->app->make(DockerRegistryApiClient::class);
+        $apiClient = $this->app->make(DockerRegistryClientInterface::class);
 
         $apiClient->port = 1234;
     }
@@ -59,7 +59,7 @@ class DockerRegistryApiClientTest extends TestCase
     {
         $this->expectException(Error::class);
 
-        $apiClient = $this->app->make(DockerRegistryApiClient::class);
+        $apiClient = $this->app->make(DockerRegistryClientInterface::class);
 
         $apiClient->version = 'v1';
     }
@@ -69,7 +69,7 @@ class DockerRegistryApiClientTest extends TestCase
     {
         $this->expectException(Error::class);
 
-        $apiClient = $this->app->make(DockerRegistryApiClient::class);
+        $apiClient = $this->app->make(DockerRegistryClientInterface::class);
 
         $apiClient->client = new stdClass();
     }

@@ -3,8 +3,9 @@
 namespace Josepostiga\DockerRegistry\Services;
 
 use GuzzleHttp\Client;
+use Josepostiga\DockerRegistry\Contracts\DockerRegistryClientInterface;
 
-class DockerRegistryApiClient
+class LocalDockerRegistryClient implements DockerRegistryClientInterface
 {
     /**
      * @var string
@@ -20,6 +21,7 @@ class DockerRegistryApiClient
      * @var Client
      */
     private $client;
+
     /**
      * @var string
      */

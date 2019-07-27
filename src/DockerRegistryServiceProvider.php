@@ -2,8 +2,9 @@
 
 namespace Josepostiga\DockerRegistry;
 
+use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use Josepostiga\DockerRegistry\Services\DockerRegistryApiClient;
+use Josepostiga\DockerRegistry\Contracts\DockerRegistryClientInterface;
 
 class DockerRegistryServiceProvider extends ServiceProvider
 {
@@ -18,8 +19,10 @@ class DockerRegistryServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'docker-registry');
 
-        $this->app->singleton(DockerRegistryApiClient::class, function () {
-            return new DockerRegistryApiClient(config('docker-registry.url'), config('docker-registry.port'), config('docker-registry.version'));
+        $this->app->singleton(DockerRegistryClientInterface::class, function (Application $app) {
+            $config = $app->config->get('docker-registry');
+
+            return new $config['service']($config['url'], $config['port'], $config['version']);
         });
     }
 }
