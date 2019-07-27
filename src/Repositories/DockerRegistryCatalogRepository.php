@@ -5,7 +5,7 @@ namespace Josepostiga\DockerRegistry\Repositories;
 use Illuminate\Support\Collection;
 use Josepostiga\DockerRegistry\Contracts\DockerRegistryClientInterface;
 
-class DockerRegistryCatalogRepository
+final class DockerRegistryCatalogRepository
 {
     /**
      * @var DockerRegistryClientInterface
