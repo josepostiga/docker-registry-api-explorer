@@ -26,9 +26,7 @@ class DockerRegistryCatalogRepositoryTest extends TestCase
             [],
             json_encode([
                 'repositories' => [
-                    'repo-1',
-                    'repo-2',
-                    'repo-3',
+                    'php',
                 ],
             ])
         );
@@ -44,6 +42,6 @@ class DockerRegistryCatalogRepositoryTest extends TestCase
         $repositories = $catalogRepository->list();
 
         $this->assertInstanceOf(Collection::class, $repositories);
-        $this->assertCount(3, $repositories);
+        $this->assertCount(1, $repositories);
     }
 }
