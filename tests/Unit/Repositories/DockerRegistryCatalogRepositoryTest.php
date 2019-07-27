@@ -36,7 +36,7 @@ class DockerRegistryCatalogRepositoryTest extends TestCase
         );
 
         $this->mock(DockerRegistryClientInterface::class, function ($mock) use ($expectedResponse) {
-            $mock->shouldReceive('get')
+            $mock->shouldReceive('call')
                 ->once()
                 ->andReturn($expectedResponse);
         });

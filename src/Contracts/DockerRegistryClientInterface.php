@@ -25,4 +25,14 @@ interface DockerRegistryClientInterface
      * @return Client
      */
     public function getClient(): Client;
+
+    /**
+     * Proxies method calls to the Http client instance.
+     *
+     * @param $resource
+     * @param null $arguments
+     *
+     * @return mixed
+     */
+    public function call($resource, $arguments = null);
 }

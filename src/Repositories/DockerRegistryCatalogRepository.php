@@ -19,7 +19,7 @@ class DockerRegistryCatalogRepository
 
     public function getAll(): Collection
     {
-        $request = $this->client->get('_catalog');
+        $request = $this->client->call('_catalog');
 
         $response = json_decode($request->getBody(), true);
 
