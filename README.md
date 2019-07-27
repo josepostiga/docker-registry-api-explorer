@@ -1,6 +1,6 @@
 **This package is still under heavy development. Do not use it, yet, unless for testing purposes**
 
-# Simple Docker Registry explorer API
+# Simple Docker Registry API Explorer
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/josepostiga/docker-registry-api-explorer.svg?style=flat-square)](https://packagist.org/packages/josepostiga/docker-registry-api-explorer)
 [![Build Status](https://img.shields.io/travis/josepostiga/docker-registry-api-explorer/master.svg?style=flat-square)](https://travis-ci.org/josepostiga/docker-registry-api-explorer)

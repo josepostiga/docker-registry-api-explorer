@@ -1,6 +1,6 @@
 {
     "name": "josepostiga/docker-registry-api-explorer",
-    "description": "Simple Docker Registry explorer API",
+    "description": "Simple Docker Registry API Explorer",
     "keywords": ["php", "package", "laravel", "docker", "registry", "api", "explorer"],
     "homepage": "https://github.com/josepostiga/docker-registry-api-explorer",
     "license": "MIT",

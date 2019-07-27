@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to `josepostiga/docker-registry` will be documented in this file.
+All notable changes to `josepostiga/docker-registry-api-explorer` will be documented in this file.
 
 ## 1.0.0 [Unreleased]
 
