@@ -23,11 +23,11 @@ final class DockerRegistryCatalogRepository
     }
 
     /**
-     * Gets a list of available repositories.
+     * List all available repositories.
      *
      * @return Collection
      */
-    public function getAll(): Collection
+    public function list(): Collection
     {
         $request = $this->client->call('_catalog');
 

@@ -43,7 +43,7 @@ class DockerRegistryCatalogRepositoryTest extends TestCase
 
         $catalogRepository = $this->app->make(DockerRegistryCatalogRepository::class);
 
-        $repositories = $catalogRepository->getAll();
+        $repositories = $catalogRepository->list();
 
         $this->assertInstanceOf(Collection::class, $repositories);
         $this->assertCount(3, $repositories);
