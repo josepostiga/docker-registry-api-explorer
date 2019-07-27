@@ -48,7 +48,7 @@ final class DockerRegistryTagsRepository
      */
     public function list(): Collection
     {
-        $request = $this->client->call("{$this->image}/tags/list");
+        $request = $this->client->call($this->getImage().'/tags/list');
 
         $response = json_decode($request->getBody(), true);
 
