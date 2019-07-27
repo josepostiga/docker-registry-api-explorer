@@ -28,7 +28,7 @@ final class LocalDockerRegistryClient implements DockerRegistryClientInterface
     private $version;
 
     /**
-     * DockerRegistryApiClient constructor.
+     * LocalDockerRegistryClient constructor.
      *
      * @param string $url
      * @param int $port
