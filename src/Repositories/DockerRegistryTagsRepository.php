@@ -34,9 +34,9 @@ final class DockerRegistryTagsRepository
     /**
      * Gets related image name.
      *
-     * @return mixed
+     * @return string
      */
-    public function getImage()
+    public function getImage(): string
     {
         return $this->image;
     }
