@@ -20,6 +20,7 @@ class DockerRegistryTagsRepositoryTest extends TestCase
         $this->assertInstanceOf(DockerRegistryTagsRepository::class, $tagsRepository);
         $this->assertEquals('php', $tagsRepository->getImage());
     }
+
     /** @test */
     public function it_gets_list_of_tags(): void
     {
