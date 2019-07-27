@@ -13,9 +13,7 @@ class DockerRegistryCatalogRepositoryTest extends TestCase
     /** @test */
     public function it_creates_a_valid_instance(): void
     {
-        $catalogRepository = $this->app->makeWith(DockerRegistryCatalogRepository::class, [
-            'apiClient' => $this->createMock(DockerRegistryClientInterface::class),
-        ]);
+        $catalogRepository = $this->app->make(DockerRegistryCatalogRepository::class);
 
         $this->assertInstanceOf(DockerRegistryCatalogRepository::class, $catalogRepository);
     }
