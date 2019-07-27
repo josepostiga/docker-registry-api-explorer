@@ -32,7 +32,7 @@ class DockerRegistryApiClient
      * @param int $port
      * @param string $version
      */
-    public function __construct(string $url, int $port, string $version = 'v2')
+    public function __construct(string $url, int $port, string $version)
     {
         $this->url = $url;
         $this->port = $port;

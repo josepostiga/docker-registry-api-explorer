@@ -13,19 +13,11 @@ class DockerRegistryApiClientTest extends TestCase
     /** @test */
     public function it_creates_a_valid_instance(): void
     {
-        $url = 'http://0.0.0.0';
-        $port = 5000;
-        $version = 'v2';
+        $apiClient = $this->app->make(DockerRegistryApiClient::class);
 
-        $apiClient = $this->app->makeWith(DockerRegistryApiClient::class, [
-            'url' => $url,
-            'port' => $port,
-            'version' => $version,
-        ]);
-
-        $this->assertEquals($url, $apiClient->getUrl());
-        $this->assertEquals($port, $apiClient->getPort());
-        $this->assertEquals($version, $apiClient->getVersion());
+        $this->assertEquals($this->app->config->get('docker-registry.url'), $apiClient->getUrl());
+        $this->assertEquals($this->app->config->get('docker-registry.port'), $apiClient->getPort());
+        $this->assertEquals($this->app->config->get('docker-registry.version'), $apiClient->getVersion());
         $this->assertInstanceOf(ClientInterface::class, $apiClient->getClient());
     }
 
@@ -35,20 +27,11 @@ class DockerRegistryApiClientTest extends TestCase
         // creates a default instance
         $apiClient = $this->app->make(DockerRegistryApiClient::class);
 
-        // tries to create a new instance with different values
-        $url = 'http://0.0.0.1';
-        $port = 5001;
-        $version = 'v2';
+        // creates a new instance
+        $otherApiClient = $this->app->make(DockerRegistryApiClient::class);
 
-        $otherApiClient = $this->app->makeWith(DockerRegistryApiClient::class, [
-            'url' => $url,
-            'port' => $port,
-            'version' => $version,
-        ]);
-
-        $this->assertEquals($apiClient->getUrl(), $otherApiClient->getUrl());
-        $this->assertEquals($apiClient->getPort(), $otherApiClient->getPort());
-        $this->assertEquals($apiClient->getVersion(), $otherApiClient->getVersion());
+        // asserts the two objects reference the same instance
+        $this->assertSame($apiClient, $otherApiClient);
     }
 
     /** @test */

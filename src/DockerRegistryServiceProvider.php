@@ -19,7 +19,7 @@ class DockerRegistryServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'docker-registry');
 
         $this->app->singleton(DockerRegistryApiClient::class, function () {
-            return new DockerRegistryApiClient(config('docker-registry.url'), config('docker-registry.port'));
+            return new DockerRegistryApiClient(config('docker-registry.url'), config('docker-registry.port'), config('docker-registry.version'));
         });
     }
 }
