@@ -2,6 +2,9 @@
 
 All notable changes to `josepostiga/docker-registry-api-explorer` will be documented in this file.
 
-## 1.0.0 [Unreleased]
+## [Unreleased version]
 
-- Initial release
+
+## 0.4.1
+
+- Initial release: support to access repositories, tags and manifests.
