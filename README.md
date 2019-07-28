@@ -26,7 +26,7 @@ composer require josepostiga/docker-registry-api-explorer
 composer test
 ```
 
-### Changelogz
+### Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
