@@ -61,7 +61,7 @@ final class DockerRegistryManifestsRepository
     }
 
     /**
-     * Get available tag details.
+     * Gets manifest details of given image related tag.
      *
      * @return Manifest
      */

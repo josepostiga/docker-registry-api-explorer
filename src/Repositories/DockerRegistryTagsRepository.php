@@ -42,7 +42,7 @@ final class DockerRegistryTagsRepository
     }
 
     /**
-     * List all available repositories.
+     * List all available tags associated to the image.
      *
      * @return Collection
      */
