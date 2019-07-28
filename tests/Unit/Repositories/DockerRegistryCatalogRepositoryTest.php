@@ -2,8 +2,8 @@
 
 namespace Josepostiga\DockerRegistry\Tests\Unit\Repositories;
 
+use Mockery\MockInterface;
 use GuzzleHttp\Psr7\Response;
-use Illuminate\Support\Collection;
 use Josepostiga\DockerRegistry\Tests\TestCase;
 use Josepostiga\DockerRegistry\Contracts\DockerRegistryClientInterface;
 use Josepostiga\DockerRegistry\Repositories\DockerRegistryCatalogRepository;
@@ -31,18 +31,18 @@ class DockerRegistryCatalogRepositoryTest extends TestCase
             ])
         );
 
-        $this->mock(DockerRegistryClientInterface::class, function ($mock) use ($expectedResponse) {
+        $this->mock(DockerRegistryClientInterface::class, function (MockInterface $mock) use ($expectedResponse) {
             $mock->shouldReceive('call')
                 ->with('_catalog')
                 ->once()
                 ->andReturn($expectedResponse);
         });
 
+        /** @var DockerRegistryCatalogRepository $catalogRepository */
         $catalogRepository = $this->app->make(DockerRegistryCatalogRepository::class);
 
         $repositories = $catalogRepository->list();
 
-        $this->assertInstanceOf(Collection::class, $repositories);
         $this->assertCount(1, $repositories);
     }
 }

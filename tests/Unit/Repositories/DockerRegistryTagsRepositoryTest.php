@@ -2,8 +2,8 @@
 
 namespace Josepostiga\DockerRegistry\Tests\Unit\Repositories;
 
+use Mockery\MockInterface;
 use GuzzleHttp\Psr7\Response;
-use Illuminate\Support\Collection;
 use Josepostiga\DockerRegistry\Tests\TestCase;
 use Josepostiga\DockerRegistry\Contracts\DockerRegistryClientInterface;
 use Josepostiga\DockerRegistry\Repositories\DockerRegistryTagsRepository;
@@ -35,20 +35,20 @@ class DockerRegistryTagsRepositoryTest extends TestCase
             ])
         );
 
-        $this->mock(DockerRegistryClientInterface::class, function ($mock) use ($expectedResponse) {
+        $this->mock(DockerRegistryClientInterface::class, function (MockInterface $mock) use ($expectedResponse) {
             $mock->shouldReceive('call')
                 ->with('php/tags/list')
                 ->once()
                 ->andReturn($expectedResponse);
         });
 
+        /** @var DockerRegistryTagsRepository $tagsRepository */
         $tagsRepository = $this->app->makeWith(DockerRegistryTagsRepository::class, [
             'image' => 'php',
         ]);
 
         $tags = $tagsRepository->list();
 
-        $this->assertInstanceOf(Collection::class, $tags);
         $this->assertCount(1, $tags);
     }
 }
