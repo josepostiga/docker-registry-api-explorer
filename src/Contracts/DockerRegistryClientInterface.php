@@ -29,10 +29,10 @@ interface DockerRegistryClientInterface
     /**
      * Proxies method calls to the Http client instance.
      *
-     * @param $resource
-     * @param null $arguments
+     * @param string $resource
+     * @param mixed ...$arguments
      *
      * @return mixed
      */
-    public function call($resource, $arguments = null);
+    public function call(string $resource, ...$arguments);
 }
