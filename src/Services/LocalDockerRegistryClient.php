@@ -41,7 +41,7 @@ final class LocalDockerRegistryClient implements DockerRegistryClientInterface
         $this->version = $version;
 
         $this->client = new Client([
-            'base_uri' => "{$this->getUrl()}:{$this->getPort()}/{$this->getVersion()}",
+            'base_uri' => "{$this->getUrl()}:{$this->getPort()}/{$this->getVersion()}/",
         ]);
     }
 
