@@ -10,28 +10,37 @@ use Josepostiga\DockerRegistry\Contracts\DockerRegistryClientInterface;
 
 class LocalDockerRegistryClientTest extends TestCase
 {
+    /** @var DockerRegistryClientInterface */
+    private $client;
+
+    /** @var array */
+    private $config;
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->client = $this->app->make(DockerRegistryClientInterface::class);
+        $this->config = $this->app->config->get('docker-registry');
+    }
+
     /** @test */
     public function it_creates_a_valid_instance(): void
     {
-        $apiClient = $this->app->make(DockerRegistryClientInterface::class);
-
-        $this->assertEquals($this->app->config->get('docker-registry.url'), $apiClient->getUrl());
-        $this->assertEquals($this->app->config->get('docker-registry.port'), $apiClient->getPort());
-        $this->assertEquals($this->app->config->get('docker-registry.version'), $apiClient->getVersion());
-        $this->assertInstanceOf(ClientInterface::class, $apiClient->getClient());
+        $this->assertEquals($this->config['url'], $this->client->getUrl());
+        $this->assertEquals($this->config['port'], $this->client->getPort());
+        $this->assertEquals($this->config['version'], $this->client->getVersion());
+        $this->assertInstanceOf(ClientInterface::class, $this->client->getClient());
     }
 
     /** @test */
     public function it_is_singleton(): void
     {
-        // creates a default instance
-        $apiClient = $this->app->make(DockerRegistryClientInterface::class);
-
         // creates a new instance
         $otherApiClient = $this->app->make(DockerRegistryClientInterface::class);
 
         // asserts the two objects reference the same instance
-        $this->assertSame($apiClient, $otherApiClient);
+        $this->assertSame($this->client, $otherApiClient);
     }
 
     /** @test */
@@ -39,9 +48,7 @@ class LocalDockerRegistryClientTest extends TestCase
     {
         $this->expectException(Error::class);
 
-        $apiClient = $this->app->make(DockerRegistryClientInterface::class);
-
-        $apiClient->url = 'http://some-other.url';
+        $this->client->url = 'http://some-other.url';
     }
 
     /** @test */
@@ -49,9 +56,7 @@ class LocalDockerRegistryClientTest extends TestCase
     {
         $this->expectException(Error::class);
 
-        $apiClient = $this->app->make(DockerRegistryClientInterface::class);
-
-        $apiClient->port = 1234;
+        $this->client->port = 1234;
     }
 
     /** @test */
@@ -59,9 +64,7 @@ class LocalDockerRegistryClientTest extends TestCase
     {
         $this->expectException(Error::class);
 
-        $apiClient = $this->app->make(DockerRegistryClientInterface::class);
-
-        $apiClient->version = 'v1';
+        $this->client->version = 'v1';
     }
 
     /** @test */
@@ -69,8 +72,6 @@ class LocalDockerRegistryClientTest extends TestCase
     {
         $this->expectException(Error::class);
 
-        $apiClient = $this->app->make(DockerRegistryClientInterface::class);
-
-        $apiClient->client = new stdClass();
+        $this->client->client = new stdClass();
     }
 }

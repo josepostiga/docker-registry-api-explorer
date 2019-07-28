@@ -13,9 +13,4 @@ class TestCase extends OrchestraTestCase
             DockerRegistryServiceProvider::class,
         ];
     }
-
-    public function setUp(): void
-    {
-        parent::setUp();
-    }
 }
