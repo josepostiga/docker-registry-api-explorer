@@ -29,7 +29,7 @@ final class DockerRegistryCatalogRepository
      */
     public function list(): Collection
     {
-        $request = $this->client->call('_catalog');
+        $request = $this->client->call('get', '_catalog');
 
         $response = json_decode($request->getBody(), true);
 

@@ -67,7 +67,7 @@ final class DockerRegistryManifestsRepository
      */
     public function get(): Manifest
     {
-        $request = $this->client->call($this->getImage().'/manifests/'.$this->getTag());
+        $request = $this->client->call('get', $this->getImage().'/manifests/'.$this->getTag());
 
         $response = json_decode($request->getBody(), true);
 

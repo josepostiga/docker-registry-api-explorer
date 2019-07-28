@@ -80,13 +80,14 @@ final class LocalDockerRegistryClient implements DockerRegistryClientInterface
     /**
      * Proxies method calls to the Http client instance.
      *
+     * @param string $verb
      * @param string $resource
      * @param mixed ...$arguments
      *
      * @return mixed
      */
-    public function call($resource, ...$arguments)
+    public function call(string $verb, string $resource, ...$arguments)
     {
-        return $this->getClient()->$resource(...$arguments);
+        return $this->getClient()->$verb($resource, ...$arguments);
     }
 }

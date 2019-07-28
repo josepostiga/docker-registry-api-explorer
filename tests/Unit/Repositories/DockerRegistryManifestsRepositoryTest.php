@@ -46,7 +46,7 @@ class DockerRegistryManifestsRepositoryTest extends TestCase
 
         $this->mock(DockerRegistryClientInterface::class, function (MockInterface $mock) use ($expectedResponse) {
             $mock->shouldReceive('call')
-                ->with('php/manifests/7.2-fpm')
+                ->with('get', 'php/manifests/7.2-fpm')
                 ->once()
                 ->andReturn($expectedResponse);
         });

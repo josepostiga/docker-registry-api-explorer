@@ -37,7 +37,7 @@ class DockerRegistryTagsRepositoryTest extends TestCase
 
         $this->mock(DockerRegistryClientInterface::class, function (MockInterface $mock) use ($expectedResponse) {
             $mock->shouldReceive('call')
-                ->with('php/tags/list')
+                ->with('get', 'php/tags/list')
                 ->once()
                 ->andReturn($expectedResponse);
         });
