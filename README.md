@@ -23,7 +23,7 @@ composer require josepostiga/docker-registry-api-explorer
 ### Testing
 
 ``` bash
-composer test
+vendor/bin/phpunit
 ```
 
 ### Changelog
