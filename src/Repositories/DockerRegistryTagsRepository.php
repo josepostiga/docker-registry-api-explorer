@@ -32,7 +32,7 @@ final class DockerRegistryTagsRepository
     }
 
     /**
-     * Gets related image name.
+     * Gets image name.
      *
      * @return string
      */
